@@ -16,17 +16,9 @@ namespace GameTrakr
             this.filter = filter;
         }
 
-        public void addGame(Game game)
-        {
-            games.Add(game);
-        }
+        
 
-        public void removeGame(int ID)
-        {
-            games.RemoveAll(new Game() {id=ID});
-        }
-
-        public void displayGames()
+        public override void displayGames()
         {
 
         }

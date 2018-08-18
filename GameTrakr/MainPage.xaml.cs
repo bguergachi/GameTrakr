@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using RestSharp;
+using RestSharp.Authenticators;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,6 +26,13 @@ namespace GameTrakr
     {
         public MainPage()
         {
+            var client = new RestClient("https://api-endpoint.igdb.com");
+            client.Authenticator = new HttpBasicAuthenticator("user-key","1a3cd3cfd8f3b3573966ed025be2c9c1");
+
+            var request = new RestRequest("/games/1", Method.GET);
+            IRestResponse response = client.Execute(request);
+            Console.Write("This: " + response.Content);
+
             this.InitializeComponent();
         }
     }

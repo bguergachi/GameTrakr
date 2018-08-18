@@ -8,9 +8,8 @@ namespace GameTrakr
 {
     class SearchList: DisplayList
     {
-        List<Game> games { get; set; }
-
-        public void displayGames()
+        
+        public override void displayGames()
         {
 
         }

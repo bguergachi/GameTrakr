@@ -7,8 +7,25 @@ using System.Threading.Tasks;
 namespace GameTrakr
 {
     //Interface to display using polymorphism
-    interface DisplayList
+    abstract class DisplayList
     {
-        void displayGames();
+        List<Game> games { get; set; }
+
+        public void addGame(Game game)
+        {
+            games.Add(game);
+        }
+
+        public void removeGame(int ID)
+        {
+            games.Remove(new Game() { id = ID });
+        }
+
+        public void clearGamees()
+        {
+            games.Clear();
+        }
+
+        abstract public void displayGames();
     }
 }

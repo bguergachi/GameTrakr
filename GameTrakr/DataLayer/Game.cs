@@ -30,5 +30,10 @@ namespace GameTrakr
             var game = (Game)obj;
             return id == game.id;
         }
+
+        public override int GetHashCode()
+        {
+            return 1877310944 + id.GetHashCode();
+        }
     }
 }
