@@ -102,11 +102,14 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewLayer\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
+    <Compile Include="ViewLayer\GameCardView.xaml.cs">
+      <DependentUpon>GameCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchList.cs" />
+    <Compile Include="ViewLayer\GameListView.xaml.cs">
+      <DependentUpon>GameListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -133,7 +136,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ViewLayer\MainView.xaml">
+    <Page Include="ViewLayer\GameCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewLayer\GameListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
