@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Drawing;
 using Windows.Storage;
+using System.Net;
 
 namespace GameTrakr
 {
