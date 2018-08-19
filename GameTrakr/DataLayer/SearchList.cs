@@ -5,6 +5,8 @@ using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using Windows.Storage;
 
 namespace GameTrakr
@@ -13,9 +15,9 @@ namespace GameTrakr
     {
         StorageFolder localFolder = ApplicationData.Current.LocalCacheFolder;
 
-        public override void displayGames()
+        public override List<Game> generateGamesList()
         {
-            Debug.Write(games);
+            return games;
         }
 
         public async void searchGame(string name)
