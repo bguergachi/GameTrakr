@@ -6,10 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Custom="using:GameTrakr.ViewLayer"
     x:Class="GameTrakr.MainPage"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <AcrylicBrush TintColor="Black"/>
+    </Page.Background>
 
-    <Grid ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid x:Name="MainPage1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RequestedTheme="Light">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
