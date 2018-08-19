@@ -10,7 +10,7 @@ namespace GameTrakr
     {
         GameFilter filter;
 
-        public GameList(GameFilter filter)
+        public GameList(GameFilter filter) : base()
         {
             this.filter = filter;
         }

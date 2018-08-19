@@ -11,6 +11,11 @@ namespace GameTrakr
     {
         protected List<Game> games { get; set; }
 
+        public DisplayList()
+        {
+            games = new List<Game>();
+        }
+
         public void addGame(Game game)
         {
             games.Add(game);
