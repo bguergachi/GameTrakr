@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Drawing;
-using System.IO;
-using System.Net;
 using Windows.Storage;
 
 namespace GameTrakr
@@ -35,7 +34,7 @@ namespace GameTrakr
             {
                 try
                 {
-                    StorageFile sampleFile = await localFolder.GetFileAsync("dataFile.txt");
+                    StorageFile sampleFile = await localFolder.GetFileAsync(g.slug+".jpg");
                     String timestamp = await FileIO.ReadTextAsync(sampleFile);
                     // Data is contained in timestamp
                 }
@@ -56,13 +55,11 @@ namespace GameTrakr
             }
         }
 
-        private async void downloadImage(string slug)
+        private async void downloadImage(Game g)
         {
-
-
             using (var client = new WebClient())
             {
-                client.DownloadFile("http://example.com/file/song/a.mpeg", slug+".jpg");
+                client.DownloadDataAsync(new Uri(g.cover["url"]), g.slug+".jpg");
             }
 
 
