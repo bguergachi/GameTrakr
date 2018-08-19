@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace GameTrakr
 {
     public struct Game
     {
-        public string title { get; set; }
-        public string platform { get; set; }
-        public string[] tags { get; set; }
-        public string coverPath { get; set; }
-        public int gameRating { get; set; }
+        public string name { get; set; }
+        public string slug { get; set; }
+        public IList<int> games { get; set; }
+        public IList<int> tags { get; set; }
+        public IList<int> genres { get; set; }
+        public Dictionary<string, string> cover { get; set; }
+        public IList<Dictionary<string, string>> release_dates { get; set; }
+        public double rating { get; set; }
         public int userRating { get; set; }
-        public int year { get; set; }
-        public int month { get; set; }
         public string list { get; set; }
         public int id { get; set; }
+
+
 
 
         public override bool Equals(object obj)
@@ -33,7 +37,7 @@ namespace GameTrakr
 
         public override int GetHashCode()
         {
-            return 1877310944 + id.GetHashCode();
+            return id;
         }
     }
 }
