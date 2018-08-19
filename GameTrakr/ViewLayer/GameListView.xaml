@@ -23,26 +23,26 @@
                   CanDragItems="True" CanDrag="True"
                   VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition">
 
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
                 <local:GameCardView HorizontalAlignment="Stretch" />
             </ListViewItem>
 
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
-            <local:GameCardView  />
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
+                <local:GameCardView  />
             </ListViewItem>
-                
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
-            <local:GameCardView  />
+
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
+                <local:GameCardView  />
             </ListViewItem>
-                
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
-            <local:GameCardView  />
+
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
+                <local:GameCardView  />
             </ListViewItem>
-                
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
-            <local:GameCardView  />
+
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
+                <local:GameCardView  />
             </ListViewItem>
-                
+
         </ListView>
         <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top">
             <Rectangle.Fill>
