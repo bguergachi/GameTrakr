@@ -5,7 +5,7 @@
     xmlns:local="using:GameTrakr.ViewLayer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="1000" Margin="7.5,0,7.5,0" HorizontalAlignment="Stretch" Width="500">
+    mc:Ignorable="d" Margin="5,0,5,0" HorizontalAlignment="Stretch" >
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.Background>
@@ -13,16 +13,18 @@
         </Grid.Background>
         <ListView Margin="0,45,0,0" AllowDrop="True" 
                   RequestedTheme="Light" 
-                  HorizontalContentAlignment="Center" 
+                  HorizontalContentAlignment="Stretch" 
                   VerticalContentAlignment="Stretch"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ReorderMode="Enabled" 
                   CanReorderItems="True" 
                   SingleSelectionFollowsFocus="True" 
-                  TabFocusNavigation="Local" CanDragItems="True" CanDrag="True" VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition">
+                  TabFocusNavigation="Local"
+                  CanDragItems="True" CanDrag="True"
+                  VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition">
 
             <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
-                <local:GameCardView  />
+                <local:GameCardView HorizontalAlignment="Stretch" />
             </ListViewItem>
 
             <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
