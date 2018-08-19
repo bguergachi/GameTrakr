@@ -5,10 +5,27 @@
     xmlns:local="using:GameTrakr.ViewLayer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="1000" Margin="7.5,0,7.5,0" Background="#FFFF6B6B" HorizontalAlignment="Center">
+    mc:Ignorable="d" Height="1000" Margin="7.5,0,7.5,0" HorizontalAlignment="Stretch" Width="1500">
 
-    <Grid Background="#FF2B2B2B" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Rectangle Height="45" Margin="64,0,64,0" Fill="#FF777677" VerticalAlignment="Top"/>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.Background>
+            <AcrylicBrush TintColor="#FF2B2B2B" BackgroundSource="Backdrop" TintOpacity="0.895" FallbackColor="#FF2B2B2B"/>
+        </Grid.Background>
+        <ListView Margin="0,45,0,0" AllowDrop="True" RequestedTheme="Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" ReorderMode="Enabled" CanDragItems="True" CanReorderItems="True" SingleSelectionFollowsFocus="True" TabFocusNavigation="Local" CanDrag="True">
+            <local:GameCardView MaxHeight="160" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+
+        </ListView>
+        <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.9" TintColor="#FF777677" FallbackColor="#FF777677"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Button x:Name="AddGameBtn"  Height="45" Content="&#xE710;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" FontWeight="Bold" FontSize="18" Background="#FF0078D7" Click="AddGameBtn_Click" HorizontalContentAlignment="Center" Margin="0,0,0,0"/>
         <Button x:Name="SearchListBtn"  Height="45" Content="&#xE094;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" Click="SearchListBtn_Click" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center">
             <Button.Background>

@@ -7,22 +7,26 @@
     xmlns:Custom="using:GameTrakr.ViewLayer"
     x:Class="GameTrakr.MainPage"
     mc:Ignorable="d">
-    <Page.Background>
-        <AcrylicBrush TintColor="Black"/>
-    </Page.Background>
 
     <Grid x:Name="MainPage1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RequestedTheme="Light">
+        <Grid.Background>
+            <AcrylicBrush TintColor="Black" FallbackColor="#FF2B2B2B" TintOpacity="0.075" BackgroundSource="HostBackdrop"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <AcrylicBrush TintColor="Black" Opacity="0.90"/>
-        </Grid.Background>
-        <Custom:GameListView Grid.Column="0" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Custom:GameListView Grid.Column="1" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Custom:GameListView Grid.Column="2" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Custom:GameListView x:Name="Wishlist" Grid.Column="0" HorizontalContentAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto">
+            <Custom:GameListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFF10808" Offset="1"/>
+                </LinearGradientBrush>
+            </Custom:GameListView.Background>
+        </Custom:GameListView>
+        <Custom:GameListView x:Name="PlayingList" Grid.Column="1" HorizontalContentAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto"/>
+        <Custom:GameListView x:Name="FinishedList" Grid.Column="2" HorizontalContentAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto"/>
 
     </Grid>
 </Page>
