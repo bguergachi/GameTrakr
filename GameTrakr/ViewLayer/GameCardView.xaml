@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Height="160" HorizontalAlignment="Stretch" Width="500" MaxHeight="160">
 
-    <Grid x:Name="GameCardViewGrid" Margin="0,4,0,4" Height="160" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160">
+    <Grid x:Name="GameCardViewGrid" Margin="0,4,0,4" Height="160" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" MinWidth="120">
         <Grid.Background>
             <AcrylicBrush TintColor="#FF002642" TintOpacity="0.94" BackgroundSource="Backdrop" AlwaysUseFallback="False" FallbackColor="#FF002642"/>
         </Grid.Background>
@@ -19,13 +19,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="0" Width="Auto"/>
             <ColumnDefinition Width="22"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="35.2"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition MinWidth="272" Width="Auto"/>
+            <ColumnDefinition Width="45.2"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="RemoveGameBtn" Content="&#xE947;" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" d:LayoutOverrides="Height, TopPosition, BottomPosition" FontFamily="Segoe MDL2 Assets" FocusVisualPrimaryBrush="#FFAF0000" RequestedTheme="Dark"/>
-        <TextBlock x:Name="ReleaseDateLbl" Grid.Column="2" Margin="0.2,1,0,68" Text="Release Date" TextWrapping="Wrap" Height="35" FocusVisualPrimaryBrush="White" FontSize="20" FontFamily="Segoe UI" Grid.Row="2" HorizontalAlignment="Left" RequestedTheme="Dark" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Width="151" VerticalAlignment="Stretch"/>
-        <Image x:Name="GameCoverImage" Grid.RowSpan="3" RequestedTheme="Dark" FocusVisualPrimaryBrush="Black" Source="/Assets/Square150x150Logo.png" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,0,0.8,0" Stretch="UniformToFill"/>
-        <TextBlock x:Name="TitleLbl" Grid.Column="2" Text="Game Name" TextWrapping="Wrap" FontSize="24" FontFamily="Segoe UI Semilight" FocusVisualPrimaryBrush="White" RequestedTheme="Dark" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="1"/>
+        <Button x:Name="RemoveGameBtn" Content="&#xE947;" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" d:LayoutOverrides="Height, TopPosition, BottomPosition" FontFamily="Segoe MDL2 Assets" FocusVisualPrimaryBrush="#FFAF0000" RequestedTheme="Dark" MinWidth="36" MinHeight="26"/>
+        <TextBlock x:Name="ReleaseDateLbl" Grid.Column="2" Margin="0.2,1,0,68" Text="Release Date" TextWrapping="Wrap" Height="35" FocusVisualPrimaryBrush="White" FontSize="20" FontFamily="Segoe UI" Grid.Row="2" HorizontalAlignment="Left" RequestedTheme="Dark" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+        <Image x:Name="GameCoverImage" Grid.RowSpan="3" RequestedTheme="Dark" FocusVisualPrimaryBrush="Black" Source="/Assets/Square150x150Logo.png" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,0,0.8,0" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="TitleLbl" Grid.Column="2" Text="Game Name" TextWrapping="Wrap" FontSize="24" FontFamily="Segoe UI Semilight" FocusVisualPrimaryBrush="White" RequestedTheme="Dark" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0.2,0.4,-0.2,-1" VerticalAlignment="Stretch"/>
     </Grid>
 </UserControl>
