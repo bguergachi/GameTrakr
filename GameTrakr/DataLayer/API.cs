@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using RestSharp;
-using RestSharp.Authenticators;
 using Newtonsoft.Json;
 
 namespace GameTrakr
@@ -13,13 +13,19 @@ namespace GameTrakr
     {
         private static readonly RestClient client = new RestClient(Global.BASE_URL);
 
-        public static List<Game> getGamesByName(string name)
+        public async static Task<List<Game>> getGamesByName(string name)
         {
             var request = new RestRequest($"/games/?search={name}&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
             request.AddHeader(Global.USER_KEY, Global.IGDB_KEY);
-            IRestResponse response = client.Execute(request);
+
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
+
             return JsonConvert.DeserializeObject<List<Game>>(response.Content);
         }
+
+         
 
         
 
