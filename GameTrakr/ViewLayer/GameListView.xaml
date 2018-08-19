@@ -11,15 +11,36 @@
         <Grid.Background>
             <AcrylicBrush TintColor="#FF2B2B2B" BackgroundSource="Backdrop" TintOpacity="0.895" FallbackColor="#FF2B2B2B"/>
         </Grid.Background>
-        <ListView Margin="0,45,0,0" AllowDrop="True" RequestedTheme="Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" ReorderMode="Enabled" CanDragItems="True" CanReorderItems="True" SingleSelectionFollowsFocus="True" TabFocusNavigation="Local" CanDrag="True">
-            <local:GameCardView MaxHeight="160" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
-            <local:GameCardView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160" Margin="-5,0,0,0" />
+        <ListView Margin="0,45,0,0" AllowDrop="True" 
+                  RequestedTheme="Light" 
+                  HorizontalContentAlignment="Center" 
+                  VerticalContentAlignment="Stretch"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ReorderMode="Enabled" 
+                  CanReorderItems="True" 
+                  SingleSelectionFollowsFocus="True" 
+                  TabFocusNavigation="Local" CanDragItems="True" CanDrag="True" VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition">
 
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+                <local:GameCardView  />
+            </ListViewItem>
+
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+            <local:GameCardView  />
+            </ListViewItem>
+                
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+            <local:GameCardView  />
+            </ListViewItem>
+                
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+            <local:GameCardView  />
+            </ListViewItem>
+                
+            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False">
+            <local:GameCardView  />
+            </ListViewItem>
+                
         </ListView>
         <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -28,7 +49,7 @@
         </Rectangle>
         <Button x:Name="AddGameBtn"  Height="45" Content="&#xE710;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" FontWeight="Bold" FontSize="18" Background="#FF0078D7" Click="AddGameBtn_Click" HorizontalContentAlignment="Center" />
         <Button x:Name="SearchListBtn"  Height="45" Content="&#xE094;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" Click="SearchListBtn_Click" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"  Background="#FF0078D7"/>
-      
-        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="List" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center"/>
+
+        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="List" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center" RequestedTheme="Dark"/>
     </Grid>
 </UserControl>
