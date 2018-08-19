@@ -35,5 +35,10 @@ namespace GameTrakr
 
             this.InitializeComponent();
         }
+
+        private void GameListView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

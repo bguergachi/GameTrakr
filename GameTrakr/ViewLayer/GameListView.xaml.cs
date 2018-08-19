@@ -17,11 +17,21 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GameTrakr.ViewLayer
 {
-    public sealed partial class MyUserControl1 : UserControl
+    public sealed partial class GameListView : UserControl
     {
-        public MyUserControl1()
+        public GameListView()
         {
             this.InitializeComponent();
+        }
+
+        private void SearchListBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
