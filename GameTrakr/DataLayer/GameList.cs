@@ -8,7 +8,6 @@ namespace GameTrakr
 {
     class GameList : DisplayList
     {
-        List<Game> games { get; set; }
         GameFilter filter;
 
         public GameList(GameFilter filter)
@@ -17,7 +16,6 @@ namespace GameTrakr
         }
 
         
-
         public override void displayGames()
         {
 

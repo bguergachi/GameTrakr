@@ -9,7 +9,7 @@ namespace GameTrakr
     //Interface to display using polymorphism
     abstract class DisplayList
     {
-        List<Game> games { get; set; }
+        protected List<Game> games { get; set; }
 
         public void addGame(Game game)
         {
@@ -21,7 +21,7 @@ namespace GameTrakr
             games.Remove(new Game() { id = ID });
         }
 
-        public void clearGamees()
+        public void clearGames()
         {
             games.Clear();
         }
