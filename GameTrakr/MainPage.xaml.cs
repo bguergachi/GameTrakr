@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -42,8 +44,32 @@ namespace GameTrakr
             string game = "Call of duty";
             searchList.searchGame(game);
             searchList.displayGames();
-            
+
             this.InitializeComponent();
+//            this.InitializeAppStyle();
+        }
+
+        private void InitializeAppStyle()
+        {
+            // using Windows.UI.ViewManagement;
+
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            // Set active window colors
+            titleBar.ForegroundColor = Windows.UI.Colors.White;
+            titleBar.BackgroundColor = Windows.UI.Colors.Black;
+            titleBar.ButtonForegroundColor = Windows.UI.Colors.White;
+            titleBar.ButtonBackgroundColor = (Color?) Application.Current.Resources["SystemAccentColor"];
+            titleBar.ButtonHoverForegroundColor = Windows.UI.Colors.White;
+            titleBar.ButtonHoverBackgroundColor = (Color?) Application.Current.Resources["SystemAccentColor"];
+            titleBar.ButtonPressedForegroundColor = Windows.UI.Colors.Gray;
+            titleBar.ButtonPressedBackgroundColor = (Color?) Application.Current.Resources["SystemAccentColor"];
+
+            // Set inactive window colors
+//            titleBar.InactiveForegroundColor = Windows.UI.Colors.Gray;
+//            titleBar.InactiveBackgroundColor = Windows.UI.Colors.SeaGreen;
+//            titleBar.ButtonInactiveForegroundColor = Windows.UI.Colors.Gray;
+//            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.SeaGreen;
         }
 
         private void GameListView_Loaded(object sender, RoutedEventArgs e)

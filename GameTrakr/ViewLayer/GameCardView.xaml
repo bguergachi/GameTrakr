@@ -5,17 +5,17 @@
     xmlns:local="using:GameTrakr.ViewLayer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="160" HorizontalAlignment="Stretch" Width="1500" Background="Black" MaxHeight="160">
+    mc:Ignorable="d" Height="160" HorizontalAlignment="Stretch" Width="500" MaxHeight="160">
 
     <Grid x:Name="GameCardViewGrid" Margin="0,4,0,4" Height="160" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="160">
+        <Grid.Background>
+            <AcrylicBrush TintColor="#FF002642" TintOpacity="0.94" BackgroundSource="Backdrop" AlwaysUseFallback="False" FallbackColor="#FF002642"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="26*"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <AcrylicBrush TintColor="#FF002642" TintOpacity="0.7"/>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="0" Width="Auto"/>
             <ColumnDefinition Width="22"/>
