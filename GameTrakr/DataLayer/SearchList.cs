@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Drawing;
 
@@ -12,14 +13,15 @@ namespace GameTrakr
         
         public override void displayGames()
         {
-            
+            Debug.Write(games);
         }
 
-        public string searchGame(string name)
+        public void searchGame(string name)
         {
-            API.searchByName(name);
+            string gameToSearch = name.Replace(" ", "_");
+            this.clearGames();
+            this.games = API.getGamesByName(gameToSearch);
 
-            return "";
         }
     }
 }

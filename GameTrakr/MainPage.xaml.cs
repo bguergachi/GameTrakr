@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -27,14 +28,20 @@ namespace GameTrakr
     {
         public MainPage()
         {
-            
+            /*
             var client = new RestClient("https://api-endpoint.igdb.com");
 
             var request = new RestRequest("/games/?search=Call_of&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
             request.AddHeader("user-key", "1a3cd3cfd8f3b3573966ed025be2c9c1");
             IRestResponse response = client.Execute(request);
             Game Hey = JsonConvert.DeserializeObject<List<Game>>(response.Content)[0];
-            Console.Write("This: " + response.Content);
+            Debug.Write("This: " + response.Content);
+            */
+
+            SearchList searchList = new SearchList();
+            string game = "Call of duty";
+            searchList.searchGame(game);
+            searchList.displayGames();
             
             this.InitializeComponent();
         }
