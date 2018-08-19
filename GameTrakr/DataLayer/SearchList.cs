@@ -11,7 +11,7 @@ namespace GameTrakr
     class SearchList: DisplayList
     {
         
-        public override void displayGames()
+        public override void generateGamesList()
         {
             Debug.Write(games);
         }

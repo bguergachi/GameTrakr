@@ -6,33 +6,29 @@ using System.Threading.Tasks;
 
 namespace GameTrakr
 {
-
-
-    class GameFilter
+    public class GameFilter
     {
-        private string platform;
-        private string[] tags;
-        private string coverPath;
-        private int year;
-        private string listType;
-        private string title;
-        private int gameRating;
-        private int userRating;
+        public Global.ListType listType { get ; set ; }
 
-        public string Title { get => title; set => title = value; }
-        public string Platform { get => platform; set => platform = value; }
-        public string[] Tags { get => tags; set => tags = value; }
-        public string CoverPath { get => coverPath; set => coverPath = value; }
-        public int GameRating { get => gameRating; set => gameRating = value; }
-        public int UserRating { get => userRating; set => userRating = value; }
-        public int Year { get => year; set => year = value; }
-        public string ListType { get => listType; set => listType = value; }
-
-        public GameFilter(string listType)
+        public GameFilter(Global.ListType listType)
         {
             this.listType = listType;
         }
 
+        public List<Game> returnFiltered(List<Game> gamesList)
+        {
+            List<Game> filteredList = new List<Game>();
+            foreach (Game game in gamesList)
+            {
+                // TODO: Need to make filter criteria more flexible. For now it only filters by list type
+                if (game.list == listType)
+                {
+                    filteredList.Add(game);
+                }
+            }
+
+            return filteredList;
+        }
 
     }
 }

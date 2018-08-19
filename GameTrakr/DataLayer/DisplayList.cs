@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameTrakr
 {
     //Interface to display using polymorphism
-    abstract class DisplayList
+    public abstract class DisplayList
     {
         protected List<Game> games { get; set; }
 
@@ -31,6 +31,6 @@ namespace GameTrakr
             games.Clear();
         }
 
-        abstract public void displayGames();
+        abstract public List<Game> generateGamesList();
     }
 }

@@ -42,7 +42,7 @@ namespace GameTrakr
             SearchList searchList = new SearchList();
             string game = "Call of duty";
             searchList.searchGame(game);
-            searchList.displayGames();
+            searchList.generateGamesList();
 
             this.InitializeComponent();
         }
@@ -52,16 +52,6 @@ namespace GameTrakr
         private void GameListView_Loaded(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        /// Extend acrylic into the title bar. 
-        private void extendAcrylicIntoTitleBar()
-        {
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            ApplicationViewTitleBar titleBar =
-                ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

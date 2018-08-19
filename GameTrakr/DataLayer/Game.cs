@@ -18,7 +18,7 @@ namespace GameTrakr
         public IList<Dictionary<string, string>> release_dates { get; set; }
         public double rating { get; set; }
         public int userRating { get; set; }
-        public string list { get; set; }
+        public Global.ListType list { get; set; }
         public int id { get; set; }
 
 

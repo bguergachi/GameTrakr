@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameTrakr
 {
-    class GameList : DisplayList
+    public class GameList : DisplayList
     {
         GameFilter filter;
 
@@ -16,9 +16,9 @@ namespace GameTrakr
         }
 
         
-        public override void displayGames()
+        public override List<Game> generateGamesList()
         {
-
+           return filter.returnFiltered(games);
         }
     }
 }

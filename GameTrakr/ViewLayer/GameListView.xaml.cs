@@ -19,6 +19,22 @@ namespace GameTrakr.ViewLayer
 {
     public sealed partial class GameListView : UserControl
     {
+        public GameList list;
+
+        public void setFilter(GameFilter filter)
+        {
+            list = new GameList(filter);
+            updateList();
+        }
+
+        private void updateList()
+        {
+            if (list != null)
+            {
+                list.generateGamesList();
+            }
+        }
+
         public GameListView()
         {
             this.InitializeComponent();
