@@ -20,7 +20,7 @@ namespace GameTrakr
             return games;
         }
 
-        public async void searchGame(string name)
+        public async Task searchGame(string name)
         {
             string gameToSearch = name.Replace(" ", "_");
             clearGames();

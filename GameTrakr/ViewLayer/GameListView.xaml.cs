@@ -13,25 +13,33 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace GameTrakr.ViewLayer
 {
     public sealed partial class GameListView : UserControl
     {
-        public GameList list;
+        public DisplayList List { get; set; }
 
         public void setFilter(GameFilter filter)
         {
-            list = new GameList(filter);
+            List = new GameList(filter);
             updateList();
         }
 
-        private void updateList()
+        public void updateList()
         {
-            if (list != null)
+            if (List != null)
             {
-                list.generateGamesList();
+                foreach (Game game in List.generateGamesList())
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Padding=new Thickness(0,0,0,0);
+                    item.UseLayoutRounding = false;
+                    item.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                    item.Content = new GameCardView(game);
+                    GameListViewComp.Items.Add(item);
+                }
+
+                List.generateGamesList();
             }
         }
 

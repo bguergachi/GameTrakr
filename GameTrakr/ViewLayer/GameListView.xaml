@@ -1,4 +1,4 @@
-﻿<UserControl x:Name="GameListView1"
+﻿<UserControl x:Name="GameListViewComponent"
     x:Class="GameTrakr.ViewLayer.GameListView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -11,7 +11,7 @@
         <Grid.Background>
             <AcrylicBrush TintColor="#FF2B2B2B" BackgroundSource="Backdrop" TintOpacity="0.895" FallbackColor="#FF2B2B2B"/>
         </Grid.Background>
-        <ListView Margin="0,45,0,0" AllowDrop="True" 
+        <ListView x:Name="GameListViewComp" Margin="0,45,0,0" AllowDrop="True" 
                   RequestedTheme="Light" 
                   HorizontalContentAlignment="Stretch" 
                   VerticalContentAlignment="Stretch"
@@ -22,27 +22,6 @@
                   TabFocusNavigation="Local"
                   CanDragItems="True" CanDrag="True"
                   VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition">
-
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
-                <local:GameCardView HorizontalAlignment="Stretch" />
-            </ListViewItem>
-
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
-                <local:GameCardView  />
-            </ListViewItem>
-
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
-                <local:GameCardView  />
-            </ListViewItem>
-
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
-                <local:GameCardView  />
-            </ListViewItem>
-
-            <ListViewItem Padding="0,0,0,0" UseLayoutRounding="False" HorizontalContentAlignment="Stretch">
-                <local:GameCardView  />
-            </ListViewItem>
-
         </ListView>
         <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top">
             <Rectangle.Fill>

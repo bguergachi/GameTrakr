@@ -39,10 +39,6 @@ namespace GameTrakr
             Debug.Write("This: " + response.Content);
             */
 
-            SearchList searchList = new SearchList();
-            string game = "Call of duty";
-            searchList.searchGame(game);
-            searchList.generateGamesList();
 
             this.InitializeComponent();
         }
@@ -51,6 +47,11 @@ namespace GameTrakr
 
         private void GameListView_Loaded(object sender, RoutedEventArgs e)
         {
+
+            // Set appropriate list types
+            //            Wishlist.list = new GameList(new GameFilter(Global.ListType.WishList));
+            //            PlayingList.list = new GameList(new GameFilter(Global.ListType.PlayingList));
+            //            FinishedList.list = new GameList(new GameFilter(Global.ListType.FinishedList));
 
         }
 
@@ -75,6 +76,20 @@ namespace GameTrakr
             titleBar.InactiveBackgroundColor = Windows.UI.Colors.Black;
             titleBar.ButtonInactiveForegroundColor = Windows.UI.Colors.Gray;
             titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Black;
+
+
+            loadLists();
+
+        }
+
+        private async void loadLists()
+        {
+            SearchList searchList = new SearchList();
+            string game = "Call of duty";
+            await searchList.searchGame(game);
+
+            Wishlist.List = searchList;
+            Wishlist.updateList();
         }
     }
 }
