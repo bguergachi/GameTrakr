@@ -35,7 +35,7 @@ namespace GameTrakr
             var request = new RestRequest("/games/?search=Call_of&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
             request.AddHeader("user-key", "1a3cd3cfd8f3b3573966ed025be2c9c1");
             IRestResponse response = client.Execute(request);
-            Game Hey = JsonConvert.DeserializeObject<List<Game>>(response.Content)[0];
+            Game Hey = JsonConvert.DeserializeObject<SearchList<Game>>(response.Content)[0];
             Debug.Write("This: " + response.Content);
             */
 
@@ -49,15 +49,6 @@ namespace GameTrakr
 
 
 
-        private void GameListView_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            // Set appropriate list types
-            //            Wishlist.list = new GameList(new GameFilter(Global.ListType.WishList));
-            //            PlayingList.list = new GameList(new GameFilter(Global.ListType.PlayingList));
-            //            FinishedList.list = new GameList(new GameFilter(Global.ListType.FinishedList));
-
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -81,6 +72,11 @@ namespace GameTrakr
             titleBar.ButtonInactiveForegroundColor = Windows.UI.Colors.Gray;
             titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Black;
 
+            
+            //            Set appropriate list types
+            Wishlist.setFilter(new GameFilter(Global.ListType.WishList));
+            PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
+            FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
 
             loadLists();
 
@@ -92,7 +88,7 @@ namespace GameTrakr
             string game = "Call of duty";
             await searchList.searchGame(game);
 
-            Wishlist.List = searchList;
+            Wishlist.SearchList = searchList;
             Wishlist.updateList();
         }
     }

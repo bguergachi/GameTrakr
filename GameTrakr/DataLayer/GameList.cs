@@ -8,17 +8,17 @@ namespace GameTrakr
 {
     public class GameList : DisplayList
     {
-        GameFilter filter;
+        public GameFilter Filter { get; }
 
         public GameList(GameFilter filter) : base()
         {
-            this.filter = filter;
+            this.Filter = filter;
         }
 
         
         public override List<Game> generateGamesList()
         {
-           return filter.returnFiltered(games);
+           return Filter.returnFiltered(games);
         }
     }
 }

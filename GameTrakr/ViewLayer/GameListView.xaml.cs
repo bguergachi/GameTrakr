@@ -17,19 +17,23 @@ namespace GameTrakr.ViewLayer
 {
     public sealed partial class GameListView : UserControl
     {
-        public DisplayList List { get; set; }
+        public DisplayList SearchList { get; set; }
+        public GameList List { get; set; }
+
 
         public void setFilter(GameFilter filter)
         {
             List = new GameList(filter);
+            titleText.Text = List.Filter.listType.Value;
+
             updateList();
         }
 
         public void updateList()
         {
-            if (List != null)
+            if (SearchList != null)
             {
-                foreach (Game game in List.generateGamesList())
+                foreach (Game game in SearchList.generateGamesList())
                 {
                     ListViewItem item = new ListViewItem();
                     item.Padding=new Thickness(0,0,0,0);
@@ -39,7 +43,7 @@ namespace GameTrakr.ViewLayer
                     GameListViewComp.Items.Add(item);
                 }
 
-                List.generateGamesList();
+                SearchList.generateGamesList();
             }
         }
 
@@ -56,6 +60,10 @@ namespace GameTrakr.ViewLayer
         private void AddGameBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void GameListViewComp_Loaded(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
