@@ -42,6 +42,7 @@ namespace GameTrakr
             SearchList searchList = new SearchList();
             string game = "Call of duty";
             searchList.searchGame(game);
+            searchList.searchGame(game);
             searchList.generateGamesList();
 
             this.InitializeComponent();

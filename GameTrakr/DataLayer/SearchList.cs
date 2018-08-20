@@ -41,7 +41,10 @@ namespace GameTrakr
                 }
                 catch (FileNotFoundException e)
                 {
-                    // Cannot find file
+                    using (var client = new WebClient())
+                    {
+                        client.DownloadDataAsync(new Uri(g.cover["url"]), g.slug + ".jpg");
+                    }
                 }
                 catch (IOException e)
                 {
@@ -56,12 +59,9 @@ namespace GameTrakr
             }
         }
 
-        private async void downloadImage(Game g)
+        private void downloadImage(Game g)
         {
-            using (var client = new WebClient())
-            {
-                client.DownloadDataAsync(new Uri(g.cover["url"]), g.slug+".jpg");
-            }
+            
 
 
         }
