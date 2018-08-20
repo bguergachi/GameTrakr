@@ -7,7 +7,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Drawing;
 using Windows.Storage;
-using System.Net;
+using System.Net.Http;
+using Windows.Networking.BackgroundTransfer;
 
 namespace GameTrakr
 {
@@ -26,25 +27,30 @@ namespace GameTrakr
             clearGames();
             var games= await API.getGamesByName(gameToSearch);
             this.games = games;
-            manageCashImage();
+            await Task.Run(() => manageCacheImage());
         }
 
-        private async void manageCashImage()
+        private async void manageCacheImage()
         {
-            foreach(Game g in games)
+            games.ForEach(async (g) =>
             {
                 try
                 {
-                    StorageFile sampleFile = await localFolder.GetFileAsync(g.slug+".jpg");
-                    String timestamp = await FileIO.ReadTextAsync(sampleFile);
-                    // Data is contained in timestamp
+                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
+
+
                 }
                 catch (FileNotFoundException e)
                 {
-                    using (var client = new WebClient())
+                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
+                    HttpClient client = new HttpClient();
+                    byte[] buffer = await client.GetByteArrayAsync("https:"+g.cover["url"]);
+                    using (Stream stream = await image.OpenStreamForWriteAsync())
                     {
-                        client.DownloadDataAsync(new Uri(g.cover["url"]), g.slug + ".jpg");
+                        stream.Write(buffer, 0, buffer.Length);
                     }
+
+                    g.imagePath = image.Path;
                 }
                 catch (IOException e)
                 {
@@ -57,13 +63,7 @@ namespace GameTrakr
                     throw;
                 }
             }
-        }
-
-        private void downloadImage(Game g)
-        {
-            
-
-
+            );
         }
     }
 }

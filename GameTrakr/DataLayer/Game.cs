@@ -20,7 +20,7 @@ namespace GameTrakr
         public int userRating { get; set; }
         public Global.ListType list { get; set; }
         public int id { get; set; }
-
+        public string imagePath { get; set; }
 
 
 
