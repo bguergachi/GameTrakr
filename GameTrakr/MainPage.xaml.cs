@@ -39,6 +39,10 @@ namespace GameTrakr
             Debug.Write("This: " + response.Content);
             */
 
+            SearchList searchList = new SearchList();
+            string game = "Call of duty";
+            searchList.searchGame(game);
+            searchList.generateGamesList();
 
             this.InitializeComponent();
         }
