@@ -38,16 +38,26 @@ namespace GameTrakr
                 {
                     StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
 
-
                 }
                 catch (FileNotFoundException e)
                 {
-                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
-                    HttpClient client = new HttpClient();
-                    byte[] buffer = await client.GetByteArrayAsync("https:"+g.cover["url"]);
-                    using (Stream stream = await image.OpenStreamForWriteAsync())
+                    StorageFile image = await localFolder.CreateFileAsync(g.slug + ".jpg", CreationCollisionOption.OpenIfExists);
+                    if (g.cover != null)
                     {
-                        stream.Write(buffer, 0, buffer.Length);
+                        HttpClient client = new HttpClient();
+                        byte[] buffer = buffer = await client.GetByteArrayAsync("https:" + g.cover["url"]).ConfigureAwait(false);
+                        try
+                        {
+                            using (Stream stream = await image.OpenStreamForWriteAsync())
+                            {
+                                stream.Write(buffer, 0, buffer.Length);
+                            }
+                        }
+                        catch (IOException ex)
+                        {
+                            Debug.WriteLine("IOException source: {0}", ex.Source);
+                        }
+                        
                     }
 
                     g.imagePath = image.Path;
