@@ -42,7 +42,6 @@ namespace GameTrakr
             SearchList searchList = new SearchList();
             string game = "Call of duty";
             searchList.searchGame(game);
-            searchList.searchGame("Halo");
             searchList.generateGamesList();
 
             this.InitializeComponent();
@@ -79,11 +78,11 @@ namespace GameTrakr
             PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
             FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
 
-            loadLists();
+            LoadLists();
 
         }
 
-        private async void loadLists()
+        private async void LoadLists()
         {
             SearchList searchList = new SearchList();
             string game = "Call of duty";

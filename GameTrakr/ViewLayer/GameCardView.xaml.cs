@@ -38,9 +38,9 @@ namespace GameTrakr.ViewLayer
         {
             // TODO: Update all UI with Game obj
             this.TitleLbl.Text = game.name == null ? "---" : game.name;
-            if(game.cover != null)
-            this.GameCoverImage.Source = new BitmapImage(
-                new Uri( "https:"+game.cover["url"], UriKind.RelativeOrAbsolute));;
+            this.ReleaseDateLbl.Text = game.release_dates != null ? game.release_dates[0]["y"] : "---";
+            if (game.imagePath != null)
+                this.GameCoverImage.Source = new BitmapImage(new Uri(game.imagePath));
         }
 
         private void GameCardView1_Loaded(object sender, RoutedEventArgs e)
