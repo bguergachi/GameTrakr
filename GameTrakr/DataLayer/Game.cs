@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace GameTrakr
 {
-    public struct Game
+    public class Game
     {
         public string name { get; set; }
         public string slug { get; set; }

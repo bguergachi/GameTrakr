@@ -40,10 +40,10 @@ namespace GameTrakr.ViewLayer
                     item.UseLayoutRounding = false;
                     item.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                     item.Content = new GameCardView(game);
+
                     GameListViewComp.Items.Add(item);
                 }
 
-                SearchList.generateGamesList();
             }
         }
 
