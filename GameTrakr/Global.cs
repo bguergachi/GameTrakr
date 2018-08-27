@@ -12,18 +12,21 @@ namespace GameTrakr
         public const string IGDB_KEY = "1a3cd3cfd8f3b3573966ed025be2c9c1";
         public const string USER_KEY = "user-key";
 
-//       public enum ListType {WishList="Wishlist", PlayingList = "Playing", FinishedList, CustomList};
+        //       public enum ListType {WishList="Wishlist", PlayingList = "Playing", FinishedList, CustomList};
 
 
         public class ListType
         {
-            private ListType(string value) { Value = value; }
+            private ListType(string value, string icon) { Value = value;
+                Icon = icon;
+            }
 
             public string Value { get; set; }
+            public string Icon { get; set; }
 
-            public static ListType WishList { get { return new ListType("Wishlist"); } }
-            public static ListType PlayingList { get { return new ListType("Playing"); } }
-            public static ListType FinishedList { get { return new ListType("Finished"); } }
+            public static ListType WishList { get { return new ListType("Wishlist", ""); } }
+            public static ListType PlayingList { get { return new ListType("Playing", ""); } }
+            public static ListType FinishedList { get { return new ListType("Finished", ""); } }
         }
     }
 }
