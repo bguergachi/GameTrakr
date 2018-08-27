@@ -28,7 +28,13 @@ namespace GameTrakr
             await API.saveGamesToLocalDatabase(this);
         }
 
-        
+        public override async void removeGame(int ID)
+        {
+            base.removeGame(ID);
+            await API.saveGamesToLocalDatabase(this);
+        }
+
+
         public override List<Game> generateGamesList()
         {
            return Filter.returnFiltered(games);

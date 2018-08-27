@@ -19,13 +19,13 @@ namespace GameTrakr
 
         public async static Task<List<Game>> getGamesByName(string name)
         {
-            var request = new RestRequest($"/games/?search={name}&fields=id,name,platform,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
+            var request = new RestRequest($"/games/?search={name}&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
             request.AddHeader(Global.USER_KEY, Global.IGDB_KEY);
 
             var cancellationTokenSource = new CancellationTokenSource();
 
             var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
-
+            Debug.Write("Response content: " + response.Content);
             if (response.IsSuccessful)
             {
                 return JsonConvert.DeserializeObject<List<Game>>(response.Content);
@@ -34,6 +34,7 @@ namespace GameTrakr
             {
                 return new List<Game>();
             }
+
         }
 
         public async static Task<List<Game>> getGamesFromLocalDatabase(string list)
@@ -63,7 +64,7 @@ namespace GameTrakr
         {
             try
             {
-                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType + ".json", CreationCollisionOption.OpenIfExists);
+                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType.GetType().GetProperty("Name").Name + ".json", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
 
             }

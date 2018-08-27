@@ -51,6 +51,8 @@ namespace GameTrakr
             await searchList.searchGame("Halo");
             searchList.generateGamesList();
 
+            //Debug.Write("Listtype name: "+ Global.Wi.Filter.listType.GetType().GetProperty("Name").Name)
+
             string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
             Debug.WriteLine("Json:" + jsonData);
 

@@ -41,15 +41,9 @@ namespace GameTrakr
             {
                 try
                 {
-<<<<<<< HEAD
-
-                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
-                    g. imagePath = image.Path;
-=======
                     // Try getting the cover image locally
                     StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
                     g.imagePath = image.Path;
->>>>>>> origin/master
                 }
                 catch (FileNotFoundException e)
                 {
