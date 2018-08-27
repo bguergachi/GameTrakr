@@ -41,12 +41,19 @@ namespace GameTrakr
             {
                 try
                 {
+<<<<<<< HEAD
 
                     StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
                     g. imagePath = image.Path;
+=======
+                    // Try getting the cover image locally
+                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
+                    g.imagePath = image.Path;
+>>>>>>> origin/master
                 }
                 catch (FileNotFoundException e)
                 {
+                    // If doesn't exist locally, download it
                     StorageFile image = await localFolder.CreateFileAsync(g.slug + ".jpg", CreationCollisionOption.OpenIfExists);
                     if (g.cover != null)
                     {
@@ -65,7 +72,6 @@ namespace GameTrakr
                         }
                         
                     }
-
                     g.imagePath = image.Path;
                 }
                 catch (IOException e)
@@ -78,6 +84,9 @@ namespace GameTrakr
                     }
                     throw;
                 }
+
+
+
             }
             );
         }
