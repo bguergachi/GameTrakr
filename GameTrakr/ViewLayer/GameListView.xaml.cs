@@ -27,7 +27,7 @@ namespace GameTrakr.ViewLayer
         {
             List = new GameList(filter);
             titleText.Text = List.Filter.listType.Value;
-
+            TitleIcon.Text = List.Filter.listType.Icon;
             updateList();
         }
 

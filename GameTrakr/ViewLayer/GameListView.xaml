@@ -202,10 +202,8 @@
                   CanReorderItems="True" 
                   SingleSelectionFollowsFocus="True" 
                   TabFocusNavigation="Local"
-                  CanDragItems="True" CanDrag="True"
-                  VerticalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition" Loaded="GameListViewComp_Loaded">
-        </ListView>
-        <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top">
+                  CanDragItems="True" CanDrag="True" Loaded="GameListViewComp_Loaded" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+        <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Rectangle.Fill>
                 <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.9" TintColor="#FF777677" FallbackColor="#FF777677"/>
             </Rectangle.Fill>
@@ -214,6 +212,7 @@
         <Button x:Name="AddGameBtn"  Height="45" Content="&#xE710;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" FontWeight="Bold" FontSize="18" Background="#FF0078D7" Click="AddGameBtn_Click" HorizontalContentAlignment="Center" />
         <Button x:Name="SearchListBtn"  Height="45" Content="&#xE094;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" Click="SearchListBtn_Click" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"  Background="#FF0078D7"/>
 
-        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="GameList" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center" RequestedTheme="Dark"/>
+        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="SearchList" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center" RequestedTheme="Dark"/>
+        <TextBlock x:Name="TitleIcon" Margin="140,10,0,0" Text="" TextWrapping="NoWrap" d:LayoutOverrides="VerticalAlignment" FontSize="24" FontWeight="Normal" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" TextAlignment="Center" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" MinWidth="20" OpticalMarginAlignment="TrimSideBearings"/>
     </Grid>
 </UserControl>
