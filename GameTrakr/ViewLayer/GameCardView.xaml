@@ -28,14 +28,14 @@
         <TextBlock x:Name="ReleaseDateLbl" 
                        Grid.Column="2" Margin="0,0,0,48.4" Text="Release Date" TextWrapping="Wrap" Height="35" FocusVisualPrimaryBrush="White" FontSize="20" FontFamily="Segoe UI" Grid.Row="2" HorizontalAlignment="Left" RequestedTheme="Dark" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" MinWidth="120"/>
         <Image x:Name="GameCoverImage" Grid.RowSpan="3" RequestedTheme="Dark" FocusVisualPrimaryBrush="Black" Source="/Assets/Square150x150Logo.png" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,0,1.2,0.4" Stretch="UniformToFill"/>
-        <RatingControl x:Name="UserRating" Grid.Column="2" Margin="0,56,104,0" Grid.Row="2" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right" Height="Auto" Background="#FF0051FF" RequestedTheme="Dark"/>
-        <RatingControl x:Name="CriticRating" Grid.Column="2" Margin="0,26,104,0" Grid.Row="2" VerticalAlignment="Top" Background="#FF68FF00" Width="112" HorizontalAlignment="Right" Foreground="#991DCF1D" FocusVisualPrimaryBrush="#FF60EA00" RequestedTheme="Dark">
+        <RatingControl x:Name="UserRating" Grid.Column="2" Margin="0,54,80,0" Grid.Row="2" VerticalAlignment="Top" Width="112" HorizontalAlignment="Right" Height="Auto" Background="#FF0051FF" RequestedTheme="Dark"/>
+        <RatingControl x:Name="CriticRating" Grid.Column="2" Margin="0,24,80,0" Grid.Row="2" VerticalAlignment="Top" Background="#FF68FF00" Width="112" HorizontalAlignment="Right" Foreground="#991DCF1D" FocusVisualPrimaryBrush="#FF60EA00" RequestedTheme="Dark">
             <RatingControl.BorderBrush>
                 <AcrylicBrush TintColor="#CC04CF4E" TintOpacity="0.945" FallbackColor="#FF68FF00"/>
             </RatingControl.BorderBrush>
         </RatingControl>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="254,27,0,0" Grid.Row="2" Text="Critic's rating" TextWrapping="Wrap" VerticalAlignment="Top" FocusVisualPrimaryBrush="#FF767676" Foreground="#FF767676"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="254,58,0,0" Grid.Row="2" Text="Your rating" TextWrapping="Wrap" VerticalAlignment="Top" FocusVisualPrimaryBrush="#FF767676" Foreground="#FF767676"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="279,26,0,0" Grid.Row="2" Text="Critic's" TextWrapping="Wrap" VerticalAlignment="Top" FocusVisualPrimaryBrush="#FF767676" Foreground="#FF767676"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="279,56,0,0" Grid.Row="2" Text="Your's" TextWrapping="Wrap" VerticalAlignment="Top" FocusVisualPrimaryBrush="#FF767676" Foreground="#FF767676"/>
     </Grid>
 
 </UserControl>
