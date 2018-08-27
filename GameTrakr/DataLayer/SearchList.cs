@@ -14,7 +14,13 @@ namespace GameTrakr
 {
     class SearchList: DisplayList
     {
-        StorageFolder localFolder = ApplicationData.Current.LocalCacheFolder;
+
+
+        public SearchList()
+        {
+            this.localFolder = ApplicationData.Current.LocalCacheFolder;
+            
+        }
 
         public override List<Game> generateGamesList()
         {
@@ -25,19 +31,19 @@ namespace GameTrakr
         {
             string gameToSearch = name.Replace(" ", "_");
             clearGames();
-            var games= await API.getGamesByName(gameToSearch);
-            this.games = games;
+            this.games= await API.getGamesByName(gameToSearch);
             await Task.Run(() => manageCacheImage());
         }
 
         private async void manageCacheImage()
         {
-            games.ForEach(async (g) =>
+            this.games.ForEach(async (g) =>
             {
                 try
                 {
-                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
 
+                    StorageFile image = await localFolder.GetFileAsync(g.slug + ".jpg");
+                    g. imagePath = image.Path;
                 }
                 catch (FileNotFoundException e)
                 {

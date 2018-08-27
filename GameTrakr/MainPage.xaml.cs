@@ -39,15 +39,22 @@ namespace GameTrakr
             Debug.Write("This: " + response.Content);
             */
 
-            SearchList searchList = new SearchList();
-            string game = "Call of duty";
-            searchList.searchGame(game);
-            searchList.generateGamesList();
+            doSOmestuff();
 
             this.InitializeComponent();
         }
 
+        public async void doSOmestuff()
+        {
+            SearchList searchList = new SearchList();
+            await searchList.searchGame("Call of duty");
+            await searchList.searchGame("Halo");
+            searchList.generateGamesList();
 
+            string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
+            Debug.WriteLine("Json:" + jsonData);
+
+        }
 
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
