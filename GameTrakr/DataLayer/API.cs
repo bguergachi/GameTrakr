@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 using System.Threading;
 using RestSharp;
 using Newtonsoft.Json;
+using System.IO;
+using System.Diagnostics;
+using Windows.Storage;
 
 namespace GameTrakr
 {
     public static class API
     {
         private static readonly RestClient client = new RestClient(Global.BASE_URL);
+        private static readonly StorageFolder databaseFolder = ApplicationData.Current.LocalFolder;
 
         public async static Task<List<Game>> getGamesByName(string name)
         {
@@ -21,13 +25,60 @@ namespace GameTrakr
             var cancellationTokenSource = new CancellationTokenSource();
 
             var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
+            Debug.Write("Response content: " + response.Content);
+            if (response.IsSuccessful)
+            {
+                return JsonConvert.DeserializeObject<List<Game>>(response.Content);
+            }
+            else
+            {
+                return new List<Game>();
+            }
 
-            return JsonConvert.DeserializeObject<List<Game>>(response.Content);
         }
 
-         
+        public async static Task<List<Game>> getGamesFromLocalDatabase(string list)
+        {
+            try
+            {
+                StorageFile dataFile = await databaseFolder.GetFileAsync(list + ".json");
+                string jsonData = await FileIO.ReadTextAsync(dataFile);
+                return JsonConvert.DeserializeObject<List<Game>>(jsonData);
 
-        
+            }
+            catch (IOException e)
+            {
+                // Get information from the exception, then throw
+                // the info to the parent method.
+                if (e.Source != null)
+                {
+                    Debug.WriteLine("IOException source: {0}", e.Source);
+                }
+                throw;
+            }
+
+
+        }
+
+        public async static Task saveGamesToLocalDatabase(GameList gameList)
+        {
+            try
+            {
+                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType.GetType().GetProperty("Name").Name + ".json", CreationCollisionOption.OpenIfExists);
+                await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
+
+            }
+            catch (IOException e)
+            {
+                // Get information from the exception, then throw
+                // the info to the parent method.
+                if (e.Source != null)
+                {
+                    Debug.WriteLine("IOException source: {0}", e.Source);
+                }
+                throw;
+            }
+        }
 
     }
 }

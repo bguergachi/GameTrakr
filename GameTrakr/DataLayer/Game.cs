@@ -21,6 +21,7 @@ namespace GameTrakr
         public Global.ListType list { get; set; }
         public int id { get; set; }
         public string imagePath { get; set; }
+        public int[] platform { get; set; }
 
 
 
