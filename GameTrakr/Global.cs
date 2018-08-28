@@ -17,9 +17,9 @@ namespace GameTrakr
 
         public class ListType
         {
-            private ListType(string value) { Value = value; }
+            private ListType(string value) { Value = value;}
 
-            public string Value { get; set; }
+            public string Value { get;}
 
             public static ListType WishList { get { return new ListType("Wishlist"); } }
             public static ListType PlayingList { get { return new ListType("Playing"); } }

@@ -19,12 +19,12 @@ namespace GameTrakr
             games = new List<Game>();
         }
 
-        public virtual async void addGame(Game game)
+        public void addGame(Game game)
         {
             games.Add(game);
         }
 
-        public virtual async void removeGame(int ID)
+        public void removeGame(int ID)
         {
             games.Remove(new Game() { id = ID });
         }

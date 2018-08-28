@@ -8,7 +8,7 @@ namespace GameTrakr
 {
     public class GameFilter
     {
-        public Global.ListType listType { get ; set ; }
+        public Global.ListType listType { get ; }
 
         public GameFilter(Global.ListType listType)
         {
