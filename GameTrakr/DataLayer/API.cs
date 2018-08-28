@@ -37,11 +37,11 @@ namespace GameTrakr
 
         }
 
-        public async static Task<List<Game>> getGamesFromLocalDatabase(string listFile)
+        public async static Task<List<Game>> getGamesFromLocalDatabase(string list)
         {
             try
             {
-                StorageFile dataFile = await databaseFolder.GetFileAsync(listFile + ".json");
+                StorageFile dataFile = await databaseFolder.GetFileAsync(list + ".json");
                 string jsonData = await FileIO.ReadTextAsync(dataFile);
                 return JsonConvert.DeserializeObject<List<Game>>(jsonData);
 
@@ -64,19 +64,8 @@ namespace GameTrakr
         {
             try
             {
-                StorageFolder imageDataBaseFolder = await databaseFolder.CreateFolderAsync("images", CreationCollisionOption.OpenIfExists);
-
-                gameList.generateGamesList().ForEach( g =>
-                {
-                    File.Move(g.imagePath, imageDataBaseFolder.Path + Path.GetFileName(g.imagePath));
-                    g.imagePath = imageDataBaseFolder.Path + Path.GetFileName(g.imagePath);
-
-                });
-
-                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType.Value + ".json", CreationCollisionOption.OpenIfExists);
+                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType.GetType().GetProperty("Name").Name + ".json", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
-
-
 
             }
             catch (IOException e)

@@ -14,9 +14,13 @@ namespace GameTrakr
 {
     class SearchList: DisplayList
     {
-        protected StorageFolder localFolder = ApplicationData.Current.LocalCacheFolder;
 
-        
+
+        public SearchList()
+        {
+            this.localFolder = ApplicationData.Current.LocalCacheFolder;
+            
+        }
 
         public override List<Game> generateGamesList()
         {

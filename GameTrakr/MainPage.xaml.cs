@@ -27,8 +27,6 @@ namespace GameTrakr
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private List<GameList> gamesList = new List<GameList>();
-
         public MainPage()
         {
             /*
@@ -41,30 +39,9 @@ namespace GameTrakr
             Debug.Write("This: " + response.Content);
             */
 
-            //Get games from files when app starts
-
-
             doSOmestuff();
 
             this.InitializeComponent();
-
-            
-            //Save game lists to files before app exit
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnExit);
-
-        }
-
-        private async void OnStart()
-        {
-
-        }
-
-        private async void OnExit(object sender, EventArgs e)
-        {
-            foreach(GameList list in gamesList)
-            {
-                await API.saveGamesToLocalDatabase(list);
-            }
         }
 
         public async void doSOmestuff()
@@ -73,6 +50,8 @@ namespace GameTrakr
             await searchList.searchGame("Call of duty");
             await searchList.searchGame("Halo");
             searchList.generateGamesList();
+
+            //Debug.Write("Listtype name: "+ Global.Wi.Filter.listType.GetType().GetProperty("Name").Name)
 
             string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
             Debug.WriteLine("Json:" + jsonData);
@@ -115,8 +94,8 @@ namespace GameTrakr
         private async void LoadLists()
         {
             SearchList searchList = new SearchList();
-            await searchList.searchGame("Call of duty");
-            await searchList.searchGame("Halo");
+            string game = "Call of duty";
+            await searchList.searchGame(game);
 
             Wishlist.SearchList = searchList;
             Wishlist.updateList();
