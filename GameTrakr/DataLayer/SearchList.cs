@@ -28,10 +28,11 @@ namespace GameTrakr
             string gameToSearch = name.Replace(" ", "_");
             clearGames();
             this.games= await API.getGamesByName(gameToSearch);
-            await Task.Run(() => manageCacheImage());
+            await manageCacheImage();
+
         }
 
-        private async void manageCacheImage()
+        private async Task manageCacheImage()
         {
             this.games.ForEach(async (g) =>
             {

@@ -12,8 +12,8 @@ namespace GameTrakr
         public string name { get; set; }
         public string slug { get; set; }
         public IList<int> games { get; set; }
-        public IList<int> tags { get; set; }
-        public IList<int> genres { get; set; }
+        public IList<Dictionary<string, string>> themes { get; set; }
+        public IList<Dictionary<string, string>> genres { get; set; }
         public Dictionary<string, string> cover { get; set; }
         public IList<Dictionary<string, string>> release_dates { get; set; }
         public double rating { get; set; }
@@ -21,7 +21,8 @@ namespace GameTrakr
         public Global.ListType list { get; set; }
         public int id { get; set; }
         public string imagePath { get; set; }
-        public int platform { get; set; }
+        public IList<Dictionary<string, string>> platforms { get; set; }
+        public int userPlatform { get; set; }
 
 
 
@@ -33,7 +34,7 @@ namespace GameTrakr
             }
 
             var game = (Game)obj;
-            return id == game.id;
+            return (id == game.id);
         }
 
         public override int GetHashCode()

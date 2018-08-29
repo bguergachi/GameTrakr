@@ -19,13 +19,15 @@ namespace GameTrakr
 
         public async static Task<List<Game>> getGamesByName(string name)
         {
-            var request = new RestRequest($"/games/?search={name}&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
+            var request = new RestRequest($"/games/?search={name}&fields=id,name,slug,genres.name,themes.name,platforms.name,release_dates,cover,rating&expand=genres,themes,platforms", Method.GET);
             request.AddHeader(Global.USER_KEY, Global.IGDB_KEY);
 
             var cancellationTokenSource = new CancellationTokenSource();
 
             var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
             Debug.Write("Response content: " + response.Content);
+
+
             if (response.IsSuccessful)
             {
                 return JsonConvert.DeserializeObject<List<Game>>(response.Content);
@@ -37,14 +39,34 @@ namespace GameTrakr
 
         }
 
-        public async static Task<List<Game>> getGamesFromLocalDatabase(string listFile)
+        public static object GetPropValue(object src, string propName)
+        {
+            var propertyInfo = src.GetType().GetProperty(propName);
+            if (propertyInfo.GetGetMethod().IsStatic)
+                return propertyInfo.GetValue(null, null);
+            else
+                return propertyInfo.GetValue(src, null);
+        }
+
+        public async static Task<List<GameList>> getGamesFromLocalDatabase()
         {
             try
             {
-                StorageFile dataFile = await databaseFolder.GetFileAsync(listFile + ".json");
-                string jsonData = await FileIO.ReadTextAsync(dataFile);
-                return JsonConvert.DeserializeObject<List<Game>>(jsonData);
+                StorageFolder jsonDataBaseFolder = await databaseFolder.GetFolderAsync("json");
+                List<GameList> gameLists = new List<GameList>();
+                foreach (StorageFile dataFile in await jsonDataBaseFolder.GetFilesAsync())
+                {
+                    string jsonData = await FileIO.ReadTextAsync(dataFile);
+                    string fileName = Path.GetFileNameWithoutExtension(dataFile.Path);
+                    Type type = typeof(Global.ListType);
+                    gameLists.Add(new GameList(new GameFilter((Global.ListType)type.GetProperty(fileName).GetValue(null, null)), JsonConvert.DeserializeObject<List<Game>>(jsonData)));
+                }
+                return gameLists;
 
+            }
+            catch (FileNotFoundException e)
+            {
+                return new List<GameList>();
             }
             catch (IOException e)
             {
@@ -73,7 +95,8 @@ namespace GameTrakr
 
                 });
 
-                StorageFile dataFile = await databaseFolder.CreateFileAsync(gameList.Filter.listType.Value + ".json", CreationCollisionOption.OpenIfExists);
+                StorageFolder jsonDataBaseFolder = await databaseFolder.CreateFolderAsync("json", CreationCollisionOption.OpenIfExists);
+                StorageFile dataFile = await jsonDataBaseFolder.CreateFileAsync(gameList.Filter.listType.Value + ".json", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
 
 

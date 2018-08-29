@@ -27,7 +27,7 @@ namespace GameTrakr
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private List<GameList> gamesList = new List<GameList>();
+        private List<GameList> gamesLists = new List<GameList>();
 
         public MainPage()
         {
@@ -42,7 +42,7 @@ namespace GameTrakr
             */
 
             //Get games from files when app starts
-
+            OnStart();
 
             doSOmestuff();
 
@@ -56,12 +56,12 @@ namespace GameTrakr
 
         private async void OnStart()
         {
-
+            gamesLists = await API.getGamesFromLocalDatabase();
         }
 
         private async void OnExit(object sender, EventArgs e)
         {
-            foreach(GameList list in gamesList)
+            foreach(GameList list in gamesLists)
             {
                 await API.saveGamesToLocalDatabase(list);
             }

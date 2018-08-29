@@ -11,12 +11,17 @@ using Newtonsoft.Json;
 
 namespace GameTrakr
 {
-    public class GameList : DisplayList
+    public class GameList : DisplayList 
     {
         public GameFilter Filter { get; }
         
         
         public GameList(GameFilter filter) : base()
+        {
+            this.Filter = filter;
+        }
+
+        public GameList(GameFilter filter, List<Game> games) : base(games)
         {
             this.Filter = filter;
         }

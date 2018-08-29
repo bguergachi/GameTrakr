@@ -19,6 +19,11 @@ namespace GameTrakr
             games = new List<Game>();
         }
 
+        public DisplayList(List<Game> games)
+        {
+            this.games = games;
+        }
+
         public void addGame(Game game)
         {
             games.Add(game);
