@@ -41,5 +41,6 @@ namespace GameTrakr
         }
 
         abstract public Task<List<Game>> generateGamesList();
+
     }
 }
