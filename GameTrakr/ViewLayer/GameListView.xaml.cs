@@ -18,6 +18,7 @@ namespace GameTrakr.ViewLayer
     using System.Timers;
 
     using Windows.ApplicationModel.DataTransfer;
+    using Windows.UI.Core;
 
     public sealed partial class GameListView : UserControl
     {
@@ -25,7 +26,7 @@ namespace GameTrakr.ViewLayer
         public GameList List { get; set; }
         private bool IsSearchVisible = false;
         private bool IsAddingGame = false;
-        private Timer searchTimer = new Timer(2000);
+        private Timer searchTimer = new Timer(1000);
 
         public void setFilter(GameFilter filter)
         {
@@ -45,7 +46,6 @@ namespace GameTrakr.ViewLayer
                 foreach (Game game in await SearchList.generateGamesList())
                 {
                     addGameCard(game);
-
                 }
             }
             if (List != null)
@@ -117,9 +117,17 @@ namespace GameTrakr.ViewLayer
 
         }
 
-        private async void SearchTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        async void SearchTimerOnElapsed(object sender, EventArgs elapsedEventArgs)
         {
-            await SearchList.searchGame(this.ListSearchField.Text);
+
+            await this.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,
+                async () =>
+                    {
+                        await SearchList.searchGame(this.ListSearchField.Text);
+                        this.updateList();
+                        this.searchTimer.Stop();
+                    });
 
         }
 
@@ -147,7 +155,6 @@ namespace GameTrakr.ViewLayer
                     this.searchTimer.Start();
                 }
             }
-            this.updateList();
         }
 
         private void GameListViewComp_Drop(object sender, DragEventArgs e)
