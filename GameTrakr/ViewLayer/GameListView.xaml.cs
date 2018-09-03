@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GameTrakr.ViewLayer
 {
+    using System.Timers;
+
     using Windows.ApplicationModel.DataTransfer;
 
     public sealed partial class GameListView : UserControl
@@ -23,7 +25,7 @@ namespace GameTrakr.ViewLayer
         public GameList List { get; set; }
         private bool IsSearchVisible = false;
         private bool IsAddingGame = false;
-
+        private Timer searchTimer = new Timer(2000);
 
         public void setFilter(GameFilter filter)
         {
@@ -110,6 +112,15 @@ namespace GameTrakr.ViewLayer
             this.HideTextbox_AddGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
             this.HideTextbox_SearchGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
 
+
+            this.searchTimer.Elapsed += SearchTimerOnElapsed;
+
+        }
+
+        private async void SearchTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        {
+            await SearchList.searchGame(this.ListSearchField.Text);
+
         }
 
         private void HideTextBoxCompleted(object sender, object e)
@@ -126,7 +137,15 @@ namespace GameTrakr.ViewLayer
         {
             if (this.IsAddingGame && this.ListSearchField.Text.Length > 0)
             {
-                await SearchList.searchGame(this.ListSearchField.Text);
+                if (this.searchTimer.Enabled)
+                {
+                    this.searchTimer.Stop();
+                    this.searchTimer.Start();
+                }
+                else
+                {
+                    this.searchTimer.Start();
+                }
             }
             this.updateList();
         }
