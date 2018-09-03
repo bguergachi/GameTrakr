@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using RestSharp;
 using RestSharp.Authenticators;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace GameTrakr
 {
@@ -80,8 +81,12 @@ namespace GameTrakr
         }
 
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
+            
+            
+
             //             using Windows.UI.ViewManagement;
             Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
@@ -108,12 +113,6 @@ namespace GameTrakr
             PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
             FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
 
-            LoadLists();
-
-        }
-
-        private async void LoadLists()
-        {
             SearchList searchList = new SearchList();
             await searchList.searchGame("Call of duty");
             await searchList.searchGame("Halo");
@@ -121,5 +120,6 @@ namespace GameTrakr
             Wishlist.SearchList = searchList;
             Wishlist.updateList();
         }
+
     }
 }

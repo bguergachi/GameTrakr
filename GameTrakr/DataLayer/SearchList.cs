@@ -18,7 +18,7 @@ namespace GameTrakr
 
         
 
-        public override List<Game> generateGamesList()
+        public override async Task<List<Game>> generateGamesList()
         {
             return games;
         }
