@@ -266,7 +266,7 @@
                   CanReorderItems="True" 
                   SingleSelectionFollowsFocus="True" 
                   TabFocusNavigation="Local"
-                  CanDragItems="True" CanDrag="True" Loaded="GameListViewComp_Loaded" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+                  CanDragItems="True" CanDrag="True" Loaded="GameListViewComp_Loaded" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Drop="GameListViewComp_Drop" DragOver="GameListViewComp_DragOver"/>
         <Rectangle Height="45" Margin="64,0,64,0" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Rectangle.Fill>
                 <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.9" TintColor="#FF777677" FallbackColor="#FF777677"/>

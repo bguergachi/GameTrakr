@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GameTrakr.ViewLayer
 {
+    using Windows.ApplicationModel.DataTransfer;
+
     public sealed partial class GameListView : UserControl
     {
         private SearchList SearchList { get; set; }
@@ -107,6 +109,7 @@ namespace GameTrakr.ViewLayer
             this.ShowTextbox_SearchGame.Completed += new EventHandler<object>(this.ShowTextBoxCompleted);
             this.HideTextbox_AddGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
             this.HideTextbox_SearchGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
+
         }
 
         private void HideTextBoxCompleted(object sender, object e)
@@ -119,11 +122,6 @@ namespace GameTrakr.ViewLayer
             this.ListSearchField.Focus(FocusState.Keyboard);
         }
 
-        private void GameListViewComp_DropCompleted(UIElement sender, DropCompletedEventArgs args)
-        {
-
-        }
-
         private async void ListSearchField_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.IsAddingGame && this.ListSearchField.Text.Length > 0)
@@ -131,6 +129,25 @@ namespace GameTrakr.ViewLayer
                 await SearchList.searchGame(this.ListSearchField.Text);
             }
             this.updateList();
+        }
+
+        private void GameListViewComp_Drop(object sender, DragEventArgs e)
+        {
+            ListView gameCard = (ListView)sender;
+            GameListViewComp.Items.Add(gameCard);
+        }
+
+        private void GameListViewComp_DragOver(object sender, DragEventArgs e)
+        {
+            if (sender.GetType() == typeof(ListView))
+            {
+                e.AcceptedOperation = DataPackageOperation.Move;
+            }
+            else
+            {
+                e.AcceptedOperation = DataPackageOperation.None;
+
+            }
         }
     }
 }
