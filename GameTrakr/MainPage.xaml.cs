@@ -112,12 +112,6 @@ namespace GameTrakr
             PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
             FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
 
-            SearchList searchList = new SearchList();
-            await searchList.searchGame("Call of duty");
-            //await searchList.searchGame("Halo");
-
-//            Wishlist.SearchList = searchList;
-            Wishlist.updateList();
         }
 
     }
