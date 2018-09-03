@@ -19,6 +19,8 @@ namespace GameTrakr.ViewLayer
     {
         public DisplayList SearchList { get; set; }
         public GameList List { get; set; }
+        private bool IsSearchVisible = false;
+        private bool IsSearching = false;
 
 
         public void setFilter(GameFilter filter)
@@ -54,16 +56,33 @@ namespace GameTrakr.ViewLayer
 
         private void SearchListBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!this.IsSearchVisible)
+                this.ShowTextbox_SearchGame.Begin();
+            else
+                this.HideTextbox_SearchGame.Begin();
+            this.IsSearchVisible = !this.IsSearchVisible;
         }
 
         private void AddGameBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (!this.IsSearchVisible)
+                this.ShowTextbox_AddGame.Begin();
+            else
+                this.HideTextbox_AddGame.Begin();
+            this.IsSearchVisible = !this.IsSearchVisible;
 
         }
 
         private void GameListViewComp_Loaded(object sender, RoutedEventArgs e)
         {
+            this.ShowTextbox_AddGame.Completed += new EventHandler<object>(this.ShowTextBoxCompleted);
+            this.ShowTextbox_SearchGame.Completed += new EventHandler<object>(this.ShowTextBoxCompleted);
+
+        }
+
+        private void ShowTextBoxCompleted(object sender, object e)
+        {
+            this.ListSearchField.Focus(FocusState.Keyboard);
         }
     }
 }

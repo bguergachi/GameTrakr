@@ -6,6 +6,188 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Margin="5,0,5,0" HorizontalAlignment="Stretch" >
+    <UserControl.Resources>
+        <Storyboard x:Name="ShowTextbox_AddGame">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="titleText" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(TextBox.Text)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value=""/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(TextBox.PlaceholderText)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Null}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="Search..."/>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FF0078D7"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF08FF06">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE094;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="&#xE930;"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE710;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="&#xE947;"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FF0078D7"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFFF1D03"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="HideTextbox_AddGame">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="titleText" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FFFF1D03">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#FF0078D7">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE710;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="&#xE710;"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FF08FF06">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#FF0078D7">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE930;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="&#xE094;"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="HideTextbox_SearchGame">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="titleText" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(Control.IsEnabled)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Boolean>False</x:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Boolean>True</x:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FFFF1D03"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#FF0078D7"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE947;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="&#xE094;"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="ShowTextbox_SearchGame">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="titleText" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(TextBox.Text)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value=""/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListSearchField" Storyboard.TargetProperty="(TextBox.PlaceholderText)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Null}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="Search..."/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="&#xE094;"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="&#xE947;"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="SearchListBtn" Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FF0078D7"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFFF1D03"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AddGameBtn" Storyboard.TargetProperty="(Control.IsEnabled)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Boolean>True</x:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Boolean>False</x:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.Background>
@@ -28,9 +210,10 @@
                 <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.9" TintColor="#FF777677" FallbackColor="#FF777677"/>
             </Rectangle.Fill>
         </Rectangle>
+        <TextBox x:Name="ListSearchField" Margin="64,0,64,0" Text="TextBox" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Height="45" FontSize="20" FontWeight="Bold" Padding="10,7,6,0" Opacity="0"/>
         <Button x:Name="AddGameBtn"  Height="45" Content="&#xE710;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" FontWeight="Bold" FontSize="18" Background="#FF0078D7" Click="AddGameBtn_Click" HorizontalContentAlignment="Center" />
         <Button x:Name="SearchListBtn"  Height="45" Content="&#xE094;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="64" FontFamily="Segoe MDL2 Assets" Click="SearchListBtn_Click" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"  Background="#FF0078D7"/>
 
-        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="SearchList" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center" RequestedTheme="Dark"/>
+        <TextBlock x:Name="titleText" Margin="0,6,0,0" Text="GameList" TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" FocusVisualSecondaryBrush="White" HorizontalAlignment="Center" Width="134" TextAlignment="Center" RequestedTheme="Dark"/>
     </Grid>
 </UserControl>
