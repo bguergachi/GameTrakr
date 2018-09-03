@@ -30,5 +30,16 @@ namespace GameTrakr
         {
            return Filter.returnFiltered(games);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is GameList))
+            {
+                return false;
+            }
+
+            var gameList = (GameList)obj;
+            return (this.Filter.listType == gameList.Filter.listType);
+        }
     }
 }

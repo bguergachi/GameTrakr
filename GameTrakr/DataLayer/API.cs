@@ -87,7 +87,7 @@ namespace GameTrakr
                 });
 
                 StorageFolder jsonDataBaseFolder = await databaseFolder.CreateFolderAsync("json", CreationCollisionOption.OpenIfExists);
-                StorageFile dataFile = await jsonDataBaseFolder.CreateFileAsync(gameList.Filter.listType.Value + ".json", CreationCollisionOption.OpenIfExists);
+                StorageFile dataFile = await jsonDataBaseFolder.CreateFileAsync(gameList.Filter.listType.FileName + ".json", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
 
 

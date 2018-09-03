@@ -70,13 +70,13 @@ namespace GameTrakr
 
         public async void doSOmestuff()
         {
-            SearchList searchList = new SearchList();
-            await searchList.searchGame("Call of duty");
-            await searchList.searchGame("Halo");
-            searchList.generateGamesList();
+            //SearchList searchList = new SearchList();
+            //await searchList.searchGame("Call of duty");
+            //await searchList.searchGame("Halo");
+            //searchList.generateGamesList();
 
-            string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
-            Debug.WriteLine("Json:" + jsonData);
+            //string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
+            //Debug.WriteLine("Json:" + jsonData);
 
         }
 
