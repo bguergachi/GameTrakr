@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Windows.Storage;
+using System.Threading.Tasks;
 
 namespace GameTrakr
 {
@@ -39,6 +40,6 @@ namespace GameTrakr
             games.Clear();
         }
 
-        abstract public List<Game> generateGamesList();
+        abstract public Task<List<Game>> generateGamesList();
     }
 }

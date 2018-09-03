@@ -31,11 +31,11 @@ namespace GameTrakr.ViewLayer
             updateList();
         }
 
-        public void updateList()
+        public async void updateList()
         {
             if (SearchList != null)
             {
-                foreach (Game game in SearchList.generateGamesList())
+                foreach (Game game in await SearchList.generateGamesList())
                 {
                     ListViewItem item = new ListViewItem();
                     item.Padding=new Thickness(0,0,0,0);
@@ -83,6 +83,11 @@ namespace GameTrakr.ViewLayer
         private void ShowTextBoxCompleted(object sender, object e)
         {
             this.ListSearchField.Focus(FocusState.Keyboard);
+        }
+
+        private void GameListViewComp_DropCompleted(UIElement sender, DropCompletedEventArgs args)
+        {
+            
         }
     }
 }

@@ -26,7 +26,7 @@ namespace GameTrakr
             this.Filter = filter;
         }
 
-        public override List<Game> generateGamesList()
+        public override async Task<List<Game>> generateGamesList()
         {
            return Filter.returnFiltered(games);
         }

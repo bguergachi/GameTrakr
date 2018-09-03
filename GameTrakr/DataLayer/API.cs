@@ -88,7 +88,7 @@ namespace GameTrakr
             {
                 StorageFolder imageDataBaseFolder = await databaseFolder.CreateFolderAsync("images", CreationCollisionOption.OpenIfExists);
 
-                gameList.generateGamesList().ForEach( g =>
+                (await gameList.generateGamesList()).ForEach( g =>
                 {
                     File.Move(g.imagePath, imageDataBaseFolder.Path + Path.GetFileName(g.imagePath));
                     g.imagePath = imageDataBaseFolder.Path + Path.GetFileName(g.imagePath);
