@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace GameTrakr
 {
@@ -27,6 +28,18 @@ namespace GameTrakr
             public static ListType WishList { get { return new ListType("Wishlist", ""); } }
             public static ListType PlayingList { get { return new ListType("Playing", ""); } }
             public static ListType FinishedList { get { return new ListType("Finished", ""); } }
+        }
+
+        public static async Task ShowError()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Unable to connect to database",
+                Content = "Check your connection and try again.",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
         }
     }
 }

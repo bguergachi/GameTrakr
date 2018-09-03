@@ -27,8 +27,14 @@ namespace GameTrakr
         {
             string gameToSearch = name.Replace(" ", "_");
             clearGames();
-            this.games= await API.getGamesByName(gameToSearch);
-            await manageCacheImage();
+            this.games = await API.getGamesByName(gameToSearch);
+
+            await (games == null ? Global.ShowError() : manageCacheImage());
+
+            if(games == null)
+            {
+                games = new List<Game>();
+            }
 
         }
 

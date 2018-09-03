@@ -27,16 +27,7 @@ namespace GameTrakr
             var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
             Debug.Write("Response content: " + response.Content);
 
-
-            if (response.IsSuccessful)
-            {
-                return JsonConvert.DeserializeObject<List<Game>>(response.Content);
-            }
-            else
-            {
-                return new List<Game>();
-            }
-
+            return response.IsSuccessful ? JsonConvert.DeserializeObject<List<Game>>(response.Content) : null;
         }
 
         public static object GetPropValue(object src, string propName)

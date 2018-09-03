@@ -45,7 +45,7 @@ namespace GameTrakr
             //Get games from files when app starts
             OnStart();
 
-            doSOmestuff();
+            //doSOmestuff();
 
             this.InitializeComponent();
 
@@ -79,7 +79,6 @@ namespace GameTrakr
             Debug.WriteLine("Json:" + jsonData);
 
         }
-
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -115,7 +114,7 @@ namespace GameTrakr
 
             SearchList searchList = new SearchList();
             await searchList.searchGame("Call of duty");
-            await searchList.searchGame("Halo");
+            //await searchList.searchGame("Halo");
 
             Wishlist.SearchList = searchList;
             Wishlist.updateList();
