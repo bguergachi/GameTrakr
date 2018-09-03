@@ -116,7 +116,7 @@ namespace GameTrakr
             await searchList.searchGame("Call of duty");
             //await searchList.searchGame("Halo");
 
-            Wishlist.SearchList = searchList;
+//            Wishlist.SearchList = searchList;
             Wishlist.updateList();
         }
 

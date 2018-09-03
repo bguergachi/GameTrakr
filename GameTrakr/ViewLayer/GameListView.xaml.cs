@@ -17,10 +17,10 @@ namespace GameTrakr.ViewLayer
 {
     public sealed partial class GameListView : UserControl
     {
-        public DisplayList SearchList { get; set; }
+        private SearchList SearchList { get; set; }
         public GameList List { get; set; }
         private bool IsSearchVisible = false;
-        private bool IsSearching = false;
+        private bool IsAddingGame = false;
 
 
         public void setFilter(GameFilter filter)
@@ -33,42 +33,70 @@ namespace GameTrakr.ViewLayer
 
         public async void updateList()
         {
-            if (SearchList != null)
+
+            GameListViewComp.Items.Clear();
+            ;
+            if (this.IsAddingGame)
             {
                 foreach (Game game in await SearchList.generateGamesList())
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.Padding=new Thickness(0,0,0,0);
-                    item.UseLayoutRounding = false;
-                    item.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-                    item.Content = new GameCardView(game);
+                    addGameCard(game);
 
-                    GameListViewComp.Items.Add(item);
+                }
+            }
+            if (List != null)
+            {
+                foreach (Game game in await List.generateGamesList())
+                {
+                    addGameCard(game);
+
                 }
 
             }
         }
 
+        private void addGameCard(Game game)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Padding = new Thickness(0, 0, 0, 0);
+            item.UseLayoutRounding = false;
+            item.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            item.Content = new GameCardView(game);
+
+            GameListViewComp.Items.Add(item);
+        }
+
         public GameListView()
         {
             this.InitializeComponent();
+            SearchList = new SearchList();
         }
 
         private void SearchListBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!this.IsSearchVisible)
+            {
                 this.ShowTextbox_SearchGame.Begin();
+            }
             else
+            {
                 this.HideTextbox_SearchGame.Begin();
+            }
             this.IsSearchVisible = !this.IsSearchVisible;
         }
 
         private void AddGameBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!this.IsSearchVisible)
+            {
+                this.IsAddingGame = true;
                 this.ShowTextbox_AddGame.Begin();
+            }
             else
+            {
+                this.IsAddingGame = false;
                 this.HideTextbox_AddGame.Begin();
+            }
             this.IsSearchVisible = !this.IsSearchVisible;
 
         }
@@ -77,7 +105,13 @@ namespace GameTrakr.ViewLayer
         {
             this.ShowTextbox_AddGame.Completed += new EventHandler<object>(this.ShowTextBoxCompleted);
             this.ShowTextbox_SearchGame.Completed += new EventHandler<object>(this.ShowTextBoxCompleted);
+            this.HideTextbox_AddGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
+            this.HideTextbox_SearchGame.Completed += new EventHandler<object>(this.HideTextBoxCompleted);
+        }
 
+        private void HideTextBoxCompleted(object sender, object e)
+        {
+            this.ListSearchField.Text = "";
         }
 
         private void ShowTextBoxCompleted(object sender, object e)
@@ -87,7 +121,16 @@ namespace GameTrakr.ViewLayer
 
         private void GameListViewComp_DropCompleted(UIElement sender, DropCompletedEventArgs args)
         {
-            
+
+        }
+
+        private async void ListSearchField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.IsAddingGame && this.ListSearchField.Text.Length > 0)
+            {
+                await SearchList.searchGame(this.ListSearchField.Text);
+            }
+            this.updateList();
         }
     }
 }

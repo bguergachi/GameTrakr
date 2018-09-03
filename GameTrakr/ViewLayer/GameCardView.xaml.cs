@@ -40,9 +40,10 @@ namespace GameTrakr.ViewLayer
             this.TitleLbl.Text = game.name == null ? "---" : game.name;
             this.ReleaseDateLbl.Text = game.release_dates != null ? game.release_dates[0]["y"] : "---";
             this.CriticRating.IsReadOnly = true;
-            this.CriticRating.Value = (int) (game.rating * 5 / 100);
+            this.CriticRating.Value = (int)(game.rating * 5 / 100);
             if (game.imagePath != null)
                 this.GameCoverImage.Source = new BitmapImage(new Uri(game.imagePath));
+            else if (game.cover != null) this.GameCoverImage.Source = new BitmapImage(new Uri("https:" + game.cover["url"]));
         }
 
         private void GameCardView1_Loaded(object sender, RoutedEventArgs e)

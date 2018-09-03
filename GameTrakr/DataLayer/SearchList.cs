@@ -12,7 +12,7 @@ using Windows.Networking.BackgroundTransfer;
 
 namespace GameTrakr
 {
-    class SearchList: DisplayList
+    public class SearchList: DisplayList
     {
         protected StorageFolder localFolder = ApplicationData.Current.LocalCacheFolder;
 
