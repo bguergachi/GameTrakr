@@ -39,7 +39,7 @@ namespace GameTrakr
             }
 
             var gameList = (GameList)obj;
-            return (this.Filter.listType == gameList.Filter.listType);
+            return (this.Filter.Equals(gameList.Filter));
         }
     }
 }

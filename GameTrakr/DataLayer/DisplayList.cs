@@ -30,6 +30,14 @@ namespace GameTrakr
             games.Add(game);
         }
 
+        public void addGames(GameList gameList)
+        {
+            foreach (Game g in gameList.games)
+            {
+                addGame(g);
+            }
+        }
+
         public void removeGame(int ID)
         {
             games.Remove(new Game() { id = ID });

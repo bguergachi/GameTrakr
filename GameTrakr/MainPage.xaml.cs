@@ -42,9 +42,6 @@ namespace GameTrakr
             Debug.Write("This: " + response.Content);
             */
 
-            //Get games from files when app starts
-            OnStart();
-
             //doSOmestuff();
 
             this.InitializeComponent();
@@ -55,10 +52,6 @@ namespace GameTrakr
 
         }
 
-        private async void OnStart()
-        {
-            gamesLists = await API.getGamesFromLocalDatabase();
-        }
 
         private async void OnExit(object sender, EventArgs e)
         {
@@ -83,8 +76,9 @@ namespace GameTrakr
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            
-            
+            gamesLists = await API.getGamesFromLocalDatabase();
+
+
 
             //             using Windows.UI.ViewManagement;
             Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
@@ -110,8 +104,10 @@ namespace GameTrakr
             //            Set appropriate list types
             Wishlist.setFilter(new GameFilter(Global.ListType.WishList));
             PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
+            PlayingList.List.addGames(gamesLists.Find(x => x.Filter.listType.Equals(Global.ListType.PlayingList)));
             FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
 
+            PlayingList.updateList();
         }
 
     }

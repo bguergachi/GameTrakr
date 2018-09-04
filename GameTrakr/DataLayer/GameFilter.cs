@@ -21,13 +21,22 @@ namespace GameTrakr
             foreach (Game game in gamesList)
             {
                 // TODO: Need to make filter criteria more flexible. For now it only filters by list type
-                if (game.list == listType)
-                {
+
                     filteredList.Add(game);
-                }
             }
 
             return filteredList;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is GameFilter))
+            {
+                return false;
+            }
+
+            var gameFilter = (GameFilter)obj;
+            return (this.listType.Equals(gameFilter.listType));
         }
 
     }
