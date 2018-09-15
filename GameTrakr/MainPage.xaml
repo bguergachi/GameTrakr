@@ -7,10 +7,16 @@
     xmlns:Custom="using:GameTrakr.ViewLayer"
     x:Class="GameTrakr.MainPage"
     mc:Ignorable="d" Loaded="Page_Loaded">
+    <Page.Foreground>
+        <AcrylicBrush/>
+    </Page.Foreground>
+    <Page.Background>
+        <AcrylicBrush TintColor="#CCD8D8D8" FallbackColor="#FFA8A8A8"/>
+    </Page.Background>
 
     <Grid x:Name="MainPage1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RequestedTheme="Light">
         <Grid.Background>
-            <AcrylicBrush TintColor="Black" FallbackColor="#FF2B2B2B" TintOpacity="0.075" BackgroundSource="HostBackdrop"/>
+            <AcrylicBrush TintColor="#FF1F1F1F" FallbackColor="#FF787878" TintOpacity="0.075" BackgroundSource="HostBackdrop"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

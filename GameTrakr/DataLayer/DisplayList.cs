@@ -32,9 +32,12 @@ namespace GameTrakr
 
         public void addGames(GameList gameList)
         {
-            foreach (Game g in gameList.games)
+            if (gameList != null)
             {
-                addGame(g);
+                foreach (Game g in gameList.games)
+                {
+                    addGame(g);
+                }
             }
         }
 
