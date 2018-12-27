@@ -57,7 +57,7 @@ namespace GameTrakr
             }
             catch (FileNotFoundException e)
             {
-                return new List<GameList>();
+                return new List<GameList>() { new GameList(new GameFilter(Global.ListType.FinishedList)), new GameList(new GameFilter(Global.ListType.WishList)), new GameList(new GameFilter(Global.ListType.PlayingList)) };
             }
             catch (IOException e)
             {

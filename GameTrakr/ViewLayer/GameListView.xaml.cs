@@ -159,21 +159,13 @@ namespace GameTrakr.ViewLayer
 
         private void GameListViewComp_Drop(object sender, DragEventArgs e)
         {
-            ListView gameCard = (ListView)sender;
-            GameListViewComp.Items.Add(gameCard);
+            //ListViewItem gameCard = e.Data.GetData()
+            //ListView gameCard = (ListView)sender;
         }
 
         private void GameListViewComp_DragOver(object sender, DragEventArgs e)
         {
-            if (sender.GetType() == typeof(ListView))
-            {
-                e.AcceptedOperation = DataPackageOperation.Move;
-            }
-            else
-            {
-                e.AcceptedOperation = DataPackageOperation.None;
-
-            }
+            e.AcceptedOperation = (sender.GetType() == typeof(ListView)) ? DataPackageOperation.Move : DataPackageOperation.None;
         }
     }
 }

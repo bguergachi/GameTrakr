@@ -9,6 +9,8 @@ namespace GameTrakr
 {
     public static class Global
     {
+        public static List<GameList> gamesLists = new List<GameList>();
+
         public const string BASE_URL = "https://api-endpoint.igdb.com";
         public const string IGDB_KEY = "a6457ef6cd0f839da23d84df34414030";
         public const string USER_KEY = "user-key";

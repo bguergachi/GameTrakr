@@ -28,55 +28,30 @@ namespace GameTrakr
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private List<GameList> gamesLists = new List<GameList>();
+        
+
+        
 
         public MainPage()
         {
-            /*
-            var client = new RestClient("https://api-endpoint.igdb.com");
-
-            var request = new RestRequest("/games/?search=Call_of&fields=id,name,slug,games,tags,genres,release_dates,cover,rating", Method.GET);
-            request.AddHeader("user-key", "1a3cd3cfd8f3b3573966ed025be2c9c1");
-            IRestResponse response = client.Execute(request);
-            Game Hey = JsonConvert.DeserializeObject<SearchList<Game>>(response.Content)[0];
-            Debug.Write("This: " + response.Content);
-            */
-
-            //doSOmestuff();
+            
 
             this.InitializeComponent();
-
             
-            //Save game lists to files before app exit
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnExit);
+            
+            
 
         }
 
 
-        private async void OnExit(object sender, EventArgs e)
-        {
-            foreach(GameList list in gamesLists)
-            {
-                await API.saveGamesToLocalDatabase(list);
-            }
-        }
+        
 
-        public async void doSOmestuff()
-        {
-            //SearchList searchList = new SearchList();
-            //await searchList.searchGame("Call of duty");
-            //await searchList.searchGame("Halo");
-            //searchList.generateGamesList();
-
-            //string jsonData = JsonConvert.SerializeObject(searchList.generateGamesList());
-            //Debug.WriteLine("Json:" + jsonData);
-
-        }
+        
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            gamesLists = await API.getGamesFromLocalDatabase();
+            Global.gamesLists = await API.getGamesFromLocalDatabase();
 
 
 
@@ -103,11 +78,15 @@ namespace GameTrakr
             
             //            Set appropriate list types
             Wishlist.setFilter(new GameFilter(Global.ListType.WishList));
+            Wishlist.List.addGames(Global.gamesLists.Find(x => x.Filter.listType.Equals(Global.ListType.WishList)));
             PlayingList.setFilter(new GameFilter(Global.ListType.PlayingList));
-            PlayingList.List.addGames(gamesLists.Find(x => x.Filter.listType.Equals(Global.ListType.PlayingList)));
+            PlayingList.List.addGames(Global.gamesLists.Find(x => x.Filter.listType.Equals(Global.ListType.PlayingList)));
             FinishedList.setFilter(new GameFilter(Global.ListType.FinishedList));
+            FinishedList.List.addGames(Global.gamesLists.Find(x => x.Filter.listType.Equals(Global.ListType.FinishedList)));
 
+            Wishlist.updateList();
             PlayingList.updateList();
+            FinishedList.updateList();
         }
 
     }
