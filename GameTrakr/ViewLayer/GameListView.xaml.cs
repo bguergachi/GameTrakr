@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GameTrakr.ViewLayer
 {
+    using System.Diagnostics;
     using System.Timers;
 
     using Windows.ApplicationModel.DataTransfer;
@@ -78,11 +79,12 @@ namespace GameTrakr.ViewLayer
 
         private void SearchListBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!this.IsSearchVisible)
+            // Is showing search button
+            if (!this.IsSearchVisible) 
             {
                 this.ShowTextbox_SearchGame.Begin();
             }
-            else
+            else // Is showing check mark button
             {
                 this.HideTextbox_SearchGame.Begin();
             }
@@ -159,8 +161,9 @@ namespace GameTrakr.ViewLayer
 
         private void GameListViewComp_Drop(object sender, DragEventArgs e)
         {
-            //ListViewItem gameCard = e.Data.GetData()
-            //ListView gameCard = (ListView)sender;
+            Debug.WriteLine (e.Data);
+            ListView gameCard = (ListView)sender;
+
         }
 
         private void GameListViewComp_DragOver(object sender, DragEventArgs e)

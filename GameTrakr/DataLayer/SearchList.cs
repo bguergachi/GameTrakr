@@ -51,7 +51,7 @@ namespace GameTrakr
                 catch (FileNotFoundException e)
                 {
                     // If doesn't exist locally, download it
-                    StorageFile image = await localFolder.CreateFileAsync(g.slug + ".jpg", CreationCollisionOption.OpenIfExists);
+                    StorageFile image = await localFolder.CreateFileAsync(g.slug + ".jpg", CreationCollisionOption.ReplaceExisting);
                     if (g.cover != null)
                     {
                         HttpClient client = new HttpClient();

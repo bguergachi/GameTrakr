@@ -24,7 +24,7 @@ namespace GameTrakr
 
             var cancellationTokenSource = new CancellationTokenSource();
 
-            var response = await client.ExecuteTaskAsync(request,cancellationTokenSource.Token);
+            var response = await client.ExecuteTaskAsync(request, cancellationTokenSource.Token);
             Debug.Write("Response content: " + response.Content);
 
             return response.IsSuccessful ? JsonConvert.DeserializeObject<List<Game>>(response.Content) : null;
@@ -57,7 +57,10 @@ namespace GameTrakr
             }
             catch (FileNotFoundException e)
             {
-                return new List<GameList>() { new GameList(new GameFilter(Global.ListType.FinishedList)), new GameList(new GameFilter(Global.ListType.WishList)), new GameList(new GameFilter(Global.ListType.PlayingList)) };
+                return new List<GameList>() {
+                    new GameList(new GameFilter(Global.ListType.FinishedList)),
+                    new GameList(new GameFilter(Global.ListType.WishList)),
+                    new GameList(new GameFilter(Global.ListType.PlayingList)) };
             }
             catch (IOException e)
             {
@@ -79,16 +82,16 @@ namespace GameTrakr
             {
                 StorageFolder imageDataBaseFolder = await databaseFolder.CreateFolderAsync("images", CreationCollisionOption.OpenIfExists);
 
-                (await gameList.generateGamesList()).ForEach( g =>
-                {
-                    File.Move(g.imagePath, imageDataBaseFolder.Path + Path.GetFileName(g.imagePath));
-                    g.imagePath = imageDataBaseFolder.Path + Path.GetFileName(g.imagePath);
+                (await gameList.generateGamesList()).ForEach(g =>
+               {
+                   File.Move(g.imagePath, imageDataBaseFolder.Path + Path.GetFileName(g.imagePath));
+                   g.imagePath = imageDataBaseFolder.Path + Path.GetFileName(g.imagePath);
 
-                });
+               });
 
                 StorageFolder jsonDataBaseFolder = await databaseFolder.CreateFolderAsync("json", CreationCollisionOption.OpenIfExists);
                 StorageFile dataFile = await jsonDataBaseFolder.CreateFileAsync(gameList.Filter.listType.FileName + ".json", CreationCollisionOption.OpenIfExists);
-                await FileIO.WriteTextAsync(dataFile,JsonConvert.SerializeObject(gameList.generateGamesList()));
+                await FileIO.WriteTextAsync(dataFile, JsonConvert.SerializeObject(gameList.generateGamesList()));
 
 
 
